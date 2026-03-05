@@ -7,13 +7,11 @@ function useDebounce(value, delay) {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebounceValue(value);
-        }, delay)
-    })
-  return (
-    <div>
-      
-    </div>
-  )
+        }, delay);
+    return () => clearTimeout(handler);
+  }, [value, delay])
+  return debounceValue
+
 }
 
 export default useDebounce
